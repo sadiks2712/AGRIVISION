@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.angular/
+.cache/
+
+# Environment files
+.env
+.env.*
+
+# ML / large files
+*.h5
+*.pt
+*.onnx
+
+# Archives & media
+*.zip
+*.rar
+*.7z
+*.mp4
+*.mov
+# Backend folders (exclude from frontend repo)
+backend/
+backend-ml/

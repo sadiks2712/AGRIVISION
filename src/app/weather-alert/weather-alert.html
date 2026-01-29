@@ -1,0 +1,94 @@
+<section class="weather-section">
+
+  <!-- 🌥 Animated Clouds (conditional) -->
+  <div class="clouds" *ngIf="showClouds">
+    <span class="cloud cloud-1"></span>
+    <span class="cloud cloud-2"></span>
+    <span class="cloud cloud-3"></span>
+  </div>
+
+  <!-- 🌧 Rain (conditional) -->
+  <div class="rain" *ngIf="showRain">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Header -->
+  <div class="weather-header">
+    <h2>🌦 Weather Alert</h2>
+    <p class="subtitle">Live weather updates for your location</p>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="weather-loading">
+    ⏳ Fetching current weather...
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="weather-error">
+    ⚠️ {{ error }}
+  </div>
+
+  <!-- ================= LANDSCAPE LAYOUT ================= -->
+  <div *ngIf="weather" class="weather-layout">
+
+    <!-- 🌦 LEFT: WEATHER CARD -->
+    <div class="weather-card">
+
+      <div class="weather-top">
+        <div>
+          <h3>📍 {{ weather.name }}</h3>
+          <span class="condition">
+            {{ weather.weather[0].main }}
+          </span>
+        </div>
+
+        <div class="temp">
+          {{ weather.main.temp }}°
+          <span>C</span>
+        </div>
+      </div>
+
+      <div class="weather-details">
+        <div class="detail">
+          <span>💧 Humidity</span>
+          <strong>{{ weather.main.humidity }}%</strong>
+        </div>
+
+        <div class="detail">
+          <span>🌬 Wind</span>
+          <strong>{{ weather.wind.speed }} km/h</strong>
+        </div>
+
+        <div class="detail">
+          <span>🌡 Feels Like</span>
+          <strong>{{ weather.main.feels_like }}°C</strong>
+        </div>
+      </div>
+
+      <!-- Alert -->
+      <div class="weather-alert">
+        ⚠️ {{ alertMessage }}
+      </div>
+
+    </div>
+
+    <!-- 📅 RIGHT: WEEKLY FORECAST -->
+    <div class="forecast-section" *ngIf="forecast.length">
+
+
+      <h3 class="forecast-title">📅 7-Day Forecast</h3>
+
+      <div class="forecast-grid">
+        <div class="forecast-card" *ngFor="let day of forecast">
+          <span class="day">{{ day.day }}</span>
+          <span class="icon">{{ day.icon }}</span>
+          <span class="temp">{{ day.temp }}°C</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

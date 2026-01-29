@@ -1,0 +1,239 @@
+<!-- ================= HERO WRAPPER ================= -->
+<div class="forest-bg" [class.night]="isNight">
+
+  <!-- 🌿 FLOATING LEAVES -->
+  <svg class="leaves-bg" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <defs>
+      <symbol id="leaf" viewBox="0 0 24 24">
+        <path
+          d="M12 2C8 6 4 10 4 14a8 8 0 0 0 16 0c0-4-4-8-8-12z"
+          fill="currentColor"
+        />
+      </symbol>
+    </defs>
+    <use href="#leaf" class="leaf l1"></use>
+    <use href="#leaf" class="leaf l2"></use>
+    <use href="#leaf" class="leaf l3"></use>
+    <use href="#leaf" class="leaf l4"></use>
+    <use href="#leaf" class="leaf l5"></use>
+  </svg>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+
+    <div class="hero-bg"></div>
+    <div class="hero-sunlight"></div>
+
+    <div class="hero-particles">
+      <span style="left:10%; animation-duration:18s;"></span>
+      <span style="left:30%; animation-duration:22s;"></span>
+      <span style="left:50%; animation-duration:20s;"></span>
+      <span style="left:70%; animation-duration:26s;"></span>
+      <span style="left:90%; animation-duration:19s;"></span>
+    </div>
+
+    <div class="hero-content">
+
+      <!-- LOGO -->
+      <svg class="hero-logo" viewBox="0 0 420 120">
+        <g transform="translate(20,20)">
+          <path
+            d="M40 0C15 0,0 25,0 50C0 80,40 100,40 100C40 100,80 80,80 50C80 25,65 0,40 0Z"
+            fill="url(#leafGradient)"
+          />
+        </g>
+        <text x="140" y="75" font-size="48" font-weight="700" fill="#e8f5e9">
+          AgriVision
+        </text>
+        <defs>
+          <linearGradient id="leafGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#66bb6a"/>
+            <stop offset="100%" stop-color="#2e7d32"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <h1>Smart Farming for a Better Tomorrow</h1>
+
+      <p>
+        Crop disease detection, weather alerts, fertilizer guidance,
+        and government schemes — all in one platform.
+      </p>
+
+      <div class="hero-actions">
+        <button class="primary-btn" (click)="goToCropDetection()">Get Started</button>
+        <button class="secondary-btn" (click)="goToFeatures()">Learn More</button>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<section id="features" class="features-section">
+
+  <h2>🌾 Powerful Features for Smart Farmers</h2>
+  <p class="features-subtitle">
+    Everything you need to grow smarter, safer, and more productive.
+  </p>
+
+  <div class="features-grid">
+
+    <!-- 🌾 Crop -->
+    <div class="feature-card">
+      <div class="card-bg-svg green">
+        <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+          <path>
+            <animate
+              attributeName="d"
+              dur="8s"
+              repeatCount="indefinite"
+              values="
+                M0,120 C80,140 160,100 240,120 320,140 400,110 400,110 L400,0 L0,0 Z;
+                M0,100 C120,130 200,90 280,110 340,130 400,100 400,100 L400,0 L0,0 Z;
+                M0,120 C80,140 160,100 240,120 320,140 400,110 400,110 L400,0 L0,0 Z
+              "
+            />
+          </path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <span class="icon">🌾</span>
+        <h3>Crop Disease Detection</h3>
+        <p>Detect crop diseases instantly using AI.</p>
+      </div>
+    </div>
+
+    <!-- 🌦 Weather -->
+    <div class="feature-card">
+      <div class="card-bg-svg blue">
+        <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+          <path>
+            <animate
+              attributeName="d"
+              dur="9s"
+              repeatCount="indefinite"
+              values="
+                M0,90 C100,110 200,80 300,100 360,120 400,90 400,90 L400,0 L0,0 Z;
+                M0,110 C120,130 220,90 320,110 360,130 400,100 400,100 L400,0 L0,0 Z;
+                M0,90 C100,110 200,80 300,100 360,120 400,90 400,90 L400,0 L0,0 Z
+              "
+            />
+          </path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <span class="icon">🌦</span>
+        <h3>Weather Alerts</h3>
+        <p>Daily weather alerts for rain, heat & storms.</p>
+      </div>
+    </div>
+
+    <!-- 💊 Fertilizer (NOW ANIMATED) -->
+    <div class="feature-card">
+      <div class="card-bg-svg lime">
+        <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+          <path>
+            <animate
+              attributeName="d"
+              dur="10s"
+              repeatCount="indefinite"
+              values="
+                M0,130 C100,150 200,110 300,130 350,150 400,120 400,120 L400,0 L0,0 Z;
+                M0,110 C120,140 220,100 320,120 360,140 400,110 400,110 L400,0 L0,0 Z;
+                M0,130 C100,150 200,110 300,130 350,150 400,120 400,120 L400,0 L0,0 Z
+              "
+            />
+          </path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <span class="icon">💊</span>
+        <h3>Fertilizer Guidance</h3>
+        <p>Right fertilizer recommendations for crops.</p>
+      </div>
+    </div>
+
+    <!-- 📜 Schemes (NOW ANIMATED) -->
+    <div class="feature-card">
+      <div class="card-bg-svg yellow">
+        <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+          <path>
+            <animate
+              attributeName="d"
+              dur="11s"
+              repeatCount="indefinite"
+              values="
+                M0,100 C120,120 220,90 320,110 360,130 400,100 400,100 L400,0 L0,0 Z;
+                M0,120 C140,140 240,110 340,130 380,150 400,120 400,120 L400,0 L0,0 Z;
+                M0,100 C120,120 220,90 320,110 360,130 400,100 400,100 L400,0 L0,0 Z
+              "
+            />
+          </path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <span class="icon">📜</span>
+        <h3>Government Schemes</h3>
+        <p>Latest schemes and subsidies for farmers.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= ABOUT SECTION ================= -->
+<section class="about-section">
+  <div class="about-container">
+    <span class="about-tag">Smart Farming Platform</span>
+
+    <h2>🌱 About AgriVision</h2>
+
+    <p class="about-lead">
+      AgriVision is a modern smart-farming platform designed to empower farmers
+      with technology-driven insights and data-based decisions.
+    </p>
+
+    <p>
+      From crop disease detection and real-time weather alerts to government
+      schemes and farming guidance, AgriVision supports farmers at every stage
+      of the agricultural journey.
+    </p>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-content">
+
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="footer-socials">
+      <a href="#" aria-label="Instagram" class="social instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#" aria-label="Facebook" class="social facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+     <a href="#" aria-label="LinkedIn" class="social linkedin">
+  <i class="fab fa-linkedin-in"></i>
+</a>
+
+      <a href="#" aria-label="GitHub" class="social github">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 AgriVision. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+

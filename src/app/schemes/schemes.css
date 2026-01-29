@@ -1,0 +1,299 @@
+/* =====================================================
+   PARTICLE BACKGROUND (MAIN BACKGROUND)
+===================================================== */
+.particles-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  top: -20px;        /* 🔥 start above the screen */
+  bottom: auto;
+
+  width: 14px;
+  height: 14px;
+
+  background: rgba(76, 175, 80, 0.35);
+  border-radius: 50%;
+  animation: particleFall linear infinite;
+}
+
+/* particle variations */
+.particle:nth-child(1)  { left: 5%;  animation-duration: 14s; }
+.particle:nth-child(2)  { left: 15%; animation-duration: 18s; animation-delay: 3s; }
+.particle:nth-child(3)  { left: 25%; animation-duration: 12s; }
+.particle:nth-child(4)  { left: 35%; animation-duration: 20s; animation-delay: 5s; }
+.particle:nth-child(5)  { left: 45%; animation-duration: 16s; }
+.particle:nth-child(6)  { left: 55%; animation-duration: 22s; animation-delay: 4s; }
+.particle:nth-child(7)  { left: 65%; animation-duration: 15s; animation-delay: 6s; }
+.particle:nth-child(8)  { left: 75%; animation-duration: 19s; }
+.particle:nth-child(9)  { left: 85%; animation-duration: 13s; animation-delay: 7s; }
+.particle:nth-child(10) { left: 95%; animation-duration: 21s; animation-delay: 2s; }
+@keyframes particleFall {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(120vh) scale(0.6); /* 🔥 fall down */
+    opacity: 0;
+  }
+}
+
+
+/* =====================================================
+   SCHEMES SECTION
+===================================================== */
+.schemes-section {
+  position: relative;
+  padding: 6rem 2rem;
+
+  /* 🌿 NEW background (darker + contrast) */
+  background: linear-gradient(
+    180deg,
+    #e6f2ea,
+    #dcebe2
+  );
+
+  text-align: center;
+  overflow: hidden;
+
+  opacity: 0;
+  animation: sectionFadeIn 1s ease forwards;
+}
+
+
+.schemes-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.section-tag {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(76, 175, 80, 0.15);
+  color: #1b5e20;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.schemes-section h2 {
+  font-size: 2.4rem;
+  color: #1b5e20;
+  margin-bottom: 0.6rem;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.35s;
+}
+
+.section-subtitle {
+  color: #555;
+  margin-bottom: 2.5rem;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* =====================================================
+   FILTERS
+===================================================== */
+.schemes-filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.7s;
+}
+
+.schemes-filters select {
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  border: 1px solid #c8e6c9;
+  background: #ffffff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+.schemes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* =====================================================
+   CARD + FLOATING BLOBS
+===================================================== */
+.scheme-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem;
+  text-align: left;
+  overflow: hidden;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: cardFadeUp 0.7s ease forwards;
+}
+
+/* stagger */
+.scheme-card:nth-child(1) { animation-delay: 0.9s; }
+.scheme-card:nth-child(2) { animation-delay: 1.05s; }
+.scheme-card:nth-child(3) { animation-delay: 1.2s; }
+.scheme-card:nth-child(4) { animation-delay: 1.35s; }
+.scheme-card:nth-child(5) { animation-delay: 1.5s; }
+
+/* blob 1 */
+.scheme-card::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: -40px;
+  left: -40px;
+  background: rgba(76, 175, 80, 0.18);
+  border-radius: 50%;
+  filter: blur(35px);
+  animation: blobFloat1 12s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* blob 2 */
+.scheme-card::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  bottom: -50px;
+  right: -50px;
+  background: rgba(56, 142, 60, 0.15);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: blobFloat2 14s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* keep content above blobs */
+.scheme-card * {
+  position: relative;
+  z-index: 2;
+}
+
+/* hover */
+.scheme-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 65px rgba(76, 175, 80, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* =====================================================
+   TEXT / BADGE
+===================================================== */
+.scheme-type {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.scheme-card h3 {
+  margin: 1rem 0 0.6rem;
+  color: #1b5e20;
+}
+
+.scheme-card p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.scheme-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.2rem 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.apply-btn {
+  font-weight: 600;
+  color: #2e7d32;
+  text-decoration: none;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes sectionFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, 20px); }
+}
+
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-25px, -30px); }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+  .schemes-section h2 {
+    font-size: 2rem;
+  }
+}

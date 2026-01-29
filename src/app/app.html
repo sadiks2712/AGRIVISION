@@ -1,0 +1,65 @@
+<!-- 🔐 SHOW LOGIN FIRST -->
+<app-login
+  *ngIf="!isLoggedIn"
+  (loginSuccess)="onLoginSuccess()">
+</app-login>
+
+<!-- 🧾 COMPLETE PROFILE (FIRST LOGIN ONLY) -->
+<app-complete-profile
+  *ngIf="isLoggedIn && !isProfileComplete"
+  (profileSaved)="onProfileCompleted()">
+</app-complete-profile>
+
+<!-- 🏠 SHOW DASHBOARD AFTER PROFILE IS COMPLETE -->
+<div *ngIf="isLoggedIn && isProfileComplete">
+
+  <!-- 📌 NAVBAR -->
+  <app-navbar
+    (menuSelected)="onMenuChange($event)">
+  </app-navbar>
+
+  <!-- 📌 MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- 🏠 HOME / HERO -->
+    <app-hero
+      *ngIf="activeSection === 'home'"
+      (startClicked)="onStartClicked()">
+    </app-hero>
+
+    <!-- 🌾 CROP DETECTION -->
+    <app-crop-detection
+      *ngIf="activeSection === 'crop'">
+    </app-crop-detection>
+
+    <!-- 🌦 WEATHER ALERT -->
+    <app-weather-alert
+      *ngIf="activeSection === 'weather'">
+    </app-weather-alert>
+
+    <!-- 📜 GOVERNMENT SCHEMES -->
+    <app-schemes
+      *ngIf="activeSection === 'schemes'">
+    </app-schemes>
+
+    <!-- 🕘 FARMER HISTORY (✅ FIXED) -->
+    <section
+      *ngIf="activeSection === 'history'"
+      class="page-section">
+
+    
+
+      <!-- ✅ REAL HISTORY COMPONENT -->
+      <app-farmer-history></app-farmer-history>
+
+    </section>
+
+    <!-- 📝 REPORTS / COMPLAINTS -->
+   <app-complaint></app-complaint>
+     
+
+   
+
+  </main>
+
+</div>

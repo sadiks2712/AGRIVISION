@@ -1,0 +1,247 @@
+/* ===============================
+   🌿 Animated Background
+================================ */
+.complaint-section {
+  max-width: 640px;
+  margin: auto;
+  padding: 3rem 1.5rem;
+  position: relative;
+  animation: pageFadeIn 0.8s ease;
+}
+
+/* Soft animated gradient background */
+.complaint-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    #e8f5e9,
+    #f1f8e9,
+    #e0f2f1
+  );
+  background-size: 300% 300%;
+  animation: gradientFlow 12s ease infinite;
+  z-index: -1;
+  border-radius: 24px;
+}
+
+/* ===============================
+   📝 Title
+================================ */
+.complaint-section h2 {
+  text-align: center;
+  color: #1b5e20;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  animation: titleDrop 0.6s ease;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2.2rem;
+  animation: fadeIn 1s ease;
+}
+
+/* ===============================
+   📦 Floating Form Card
+================================ */
+.form-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  padding: 2.4rem;
+  border-radius: 20px;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: cardFloatIn 0.7s ease;
+  transition: transform 0.4s ease;
+}
+
+/* Gentle hover float */
+.form-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ===============================
+   ✏ Animated Inputs
+================================ */
+input,
+select,
+textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1.6px solid #cfd8dc;
+  font-size: 0.95rem;
+  background: #ffffff;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Lift + glow on focus */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow:
+    0 0 0 4px rgba(46, 125, 50, 0.18),
+    0 6px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px) scale(1.01);
+  animation: focusPulse 0.4s ease;
+}
+
+/* File input style */
+input[type="file"] {
+  background: #f4f7f6;
+  cursor: pointer;
+}
+
+/* ===============================
+   🔘 Animated Button
+================================ */
+button {
+  margin-top: 0.8rem;
+  background: linear-gradient(
+    135deg,
+    #2e7d32,
+    #1b5e20
+  );
+  color: #fff;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.2s ease;
+}
+
+/* Button hover lift */
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(46, 125, 50, 0.45);
+}
+
+/* Ripple illusion */
+button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+button:active::after {
+  opacity: 1;
+}
+
+/* Disabled */
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   ✅ Success & ❌ Error
+================================ */
+.success,
+.error {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 0.6rem;
+  animation: popFade 0.4s ease;
+}
+
+.success {
+  color: #2e7d32;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+/* ===============================
+   🎞 Keyframes
+================================ */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cardFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titleDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes focusPulse {
+  from { box-shadow: none; }
+  to {
+    box-shadow:
+      0 0 0 4px rgba(46, 125, 50, 0.18);
+  }
+}
+
+@keyframes popFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===============================
+   📱 Mobile Polish
+================================ */
+@media (max-width: 600px) {
+  .form-card {
+    padding: 1.8rem;
+  }
+
+  .complaint-section h2 {
+    font-size: 1.6rem;
+  }
+}

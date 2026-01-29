@@ -1,0 +1,80 @@
+<section class="crop-section">
+
+  <!-- Header -->
+  <div class="crop-header">
+    <h2>🌾 Crop Disease Detection</h2>
+    <p class="subtitle">
+      Upload a clear crop image to identify disease and get treatment guidance.
+    </p>
+  </div>
+
+  <!-- Upload Card -->
+  <div class="upload-card">
+
+    <input
+      type="file"
+      accept="image/*"
+      #fileInput
+      (change)="onImageUpload($event)"
+      hidden
+    />
+
+    <div class="upload-box" (click)="fileInput.click()">
+
+      <!-- Placeholder -->
+      <div *ngIf="!selectedImage" class="upload-placeholder">
+        <span class="icon">📷</span>
+        <p>Click to upload crop image</p>
+        <small>JPG, PNG supported</small>
+      </div>
+
+      <!-- Preview -->
+      <img
+        *ngIf="selectedImage"
+        [src]="selectedImage"
+        alt="Uploaded crop image"
+        class="preview-image"
+      />
+
+    </div>
+
+    <button
+      class="detect-btn"
+      [disabled]="isDetecting"
+    >
+      <span *ngIf="!isDetecting">🔍 Detecting automatically…</span>
+      <span *ngIf="isDetecting">⏳ Analyzing image...</span>
+    </button>
+
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" *ngIf="result && !isDetecting">
+
+    <h3>🧪 Detection Result</h3>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <span>🌱 Crop</span>
+        <strong>{{ result.cropName }}</strong>
+      </div>
+
+      <div class="result-item">
+        <span>🦠 Disease</span>
+        <strong>{{ result.disease }}</strong>
+      </div>
+
+      <div class="result-item">
+        <span>🧴 Pesticide</span>
+        <strong>{{ result.pesticide }}</strong>
+      </div>
+
+      <div class="result-item">
+        <span>🌿 Fertilizer</span>
+        <strong>{{ result.fertilizer }}</strong>
+      </div>
+    </div>
+
+  </div>
+
+</section>

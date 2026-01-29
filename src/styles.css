@@ -1,0 +1,11 @@
+:root {
+  --navbar-height: 70px;
+}
+/* You can add global styles to this file, and also import other style files */
+.main-content {
+  padding-top: var(--navbar-height); /* keeps content below fixed navbar */
+}
+
+.page-section {
+  padding: 2rem;
+}

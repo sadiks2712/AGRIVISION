@@ -1,0 +1,161 @@
+/* ===============================
+   🌾 Farmer History Section
+================================ */
+.history-section {
+  padding: 2.5rem 1.5rem;
+  max-width: 960px;
+  margin: auto;
+}
+
+/* Title */
+.history-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+/* Empty State */
+.empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #777;
+  font-size: 1.05rem;
+  background: #f5f7f6;
+  border-radius: 16px;
+}
+
+/* List */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Card */
+.history-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f1f8f4
+  );
+  border-radius: 16px;
+  padding: 1.2rem 1.6rem;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08);
+  animation: fadeSlideIn 0.45s ease;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* Hover effect */
+.history-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Info */
+.info h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.info p {
+  margin: 0.15rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* Remove Button */
+.remove-btn {
+  background: linear-gradient(
+    135deg,
+    #e53935,
+    #c62828
+  );
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              opacity 0.2s ease;
+}
+
+.remove-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(229, 57, 53, 0.35);
+}
+
+.remove-btn:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+/* Clear All Button */
+.clear-btn {
+  margin-top: 2rem;
+  align-self: center;
+  background: linear-gradient(
+    135deg,
+    #212121,
+    #000000
+  );
+  color: #fff;
+  padding: 0.75rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.clear-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Animations */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   📱 Mobile Responsive
+================================ */
+@media (max-width: 600px) {
+  .history-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .remove-btn {
+    align-self: flex-end;
+  }
+}

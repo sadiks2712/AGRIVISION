@@ -1,0 +1,256 @@
+/* =====================================================
+   WEATHER SECTION (MAIN CONTAINER)
+===================================================== */
+.weather-section {
+  position: relative;
+  padding: 4rem 2rem;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    #e0f2f1,
+    #e8f5e9,
+    #ffffff
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* =====================================================
+   CLOUDS
+===================================================== */
+.clouds,
+.rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================= CLOUDS ================= */
+.cloud {
+  position: absolute;
+  top: 10%;
+  width: 220px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 50px;
+  filter: blur(2px);
+  animation: cloudMove linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  top: -40px;
+}
+
+.cloud::before { left: 20px; }
+.cloud::after { right: 20px; }
+
+.cloud-1 { left: -30%; animation-duration: 60s; }
+.cloud-2 { top: 25%; left: -40%; animation-duration: 90s; }
+.cloud-3 { top: 40%; left: -50%; animation-duration: 75s; }
+
+@keyframes cloudMove {
+  to { transform: translateX(150vw); }
+}
+
+/* ================= RAIN ================= */
+.rain span {
+  position: absolute;
+  top: -20px;
+  width: 2px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.45);
+  animation: rainFall linear infinite;
+}
+
+.rain span:nth-child(1) { left: 10%; animation-duration: 0.9s; }
+.rain span:nth-child(2) { left: 25%; animation-duration: 1.1s; }
+.rain span:nth-child(3) { left: 40%; animation-duration: 1s; }
+.rain span:nth-child(4) { left: 55%; animation-duration: 1.2s; }
+.rain span:nth-child(5) { left: 65%; animation-duration: 0.95s; }
+.rain span:nth-child(6) { left: 75%; animation-duration: 1.05s; }
+.rain span:nth-child(7) { left: 85%; animation-duration: 0.85s; }
+.rain span:nth-child(8) { left: 95%; animation-duration: 1.15s; }
+
+@keyframes rainFall {
+  to {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.weather-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.weather-header h2 {
+  font-size: 2.6rem;
+  color: #1b5e20;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #546e7a;
+}
+
+/* =====================================================
+   LANDSCAPE LAYOUT WRAPPER
+===================================================== */
+.weather-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  align-items: start;
+}
+
+/* =====================================================
+   WEATHER CARD
+===================================================== */
+.weather-card {
+  background: linear-gradient(
+    160deg,
+    #2196f3,
+    #26c6da,
+    #4caf50
+  );
+  color: white;
+  border-radius: 28px;
+  padding: 2.5rem;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+  animation: weatherFade 1s ease;
+}
+
+/* Top */
+.weather-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temp {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.condition {
+  opacity: 0.9;
+}
+
+/* Details */
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.detail {
+  background: rgba(255,255,255,0.22);
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Alert */
+.weather-alert {
+  background: linear-gradient(135deg, #ffca28, #ffc107);
+  color: #3e2723;
+  border-radius: 16px;
+  padding: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* =====================================================
+   WEEKLY FORECAST (RIGHT SIDE)
+===================================================== */
+.forecast-section {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 26px;
+  padding: 2rem;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+.forecast-title {
+  text-align: center;
+  margin-bottom: 1.4rem;
+  color: #1b5e20;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.forecast-card {
+  background: white;
+  border-radius: 18px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.forecast-card .icon {
+  font-size: 1.5rem;
+  margin: 0.4rem 0;
+}
+
+.forecast-card .temp {
+  font-weight: 700;
+  color: #1b5e20;
+  font-size: 1rem;
+}
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+@keyframes weatherFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE (MOBILE → PORTRAIT)
+===================================================== */
+@media (max-width: 900px) {
+  .weather-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  }
+
+  .temp {
+    font-size: 3.2rem;
+  }
+}

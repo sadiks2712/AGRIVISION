@@ -1,0 +1,32 @@
+<section class="history-section">
+  <h2>🌾 Crop Detection History</h2>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="history.length === 0">
+    <p>No crop detection history available.</p>
+  </div>
+
+  <!-- History list -->
+  <div class="history-list" *ngIf="history.length > 0">
+
+    <div
+      class="history-card"
+      *ngFor="let item of history; trackBy: trackById"
+    >
+      <div class="info">
+        <h3>{{ item.cropName }}</h3>
+        <p><strong>Disease:</strong> {{ item.disease }}</p>
+        <p><strong>Confidence:</strong> {{ item.confidence }}%</p>
+        <p class="date">📅 {{ item.date }}</p>
+      </div>
+
+      <button class="remove-btn" (click)="removeHistory(item.id)">
+        ❌ Remove
+      </button>
+    </div>
+
+    <button class="clear-btn" (click)="clearAllHistory()">
+      🗑 Clear All History
+    </button>
+  </div>
+</section>

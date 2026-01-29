@@ -1,0 +1,75 @@
+<section class="schemes-section">
+  <div class="particles-bg">
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+  <span class="particle"></span>
+</div>
+  <div class="schemes-container">
+
+    <span class="section-tag">🏛️ Government Support</span>
+    <h2>Government Schemes for Farmers</h2>
+    <p class="section-subtitle">
+      Explore central and state government schemes for loans, insurance,
+      and subsidies — tailored for farmers.
+    </p>
+
+    <!-- Filters -->
+    <div class="schemes-filters">
+      <select [(ngModel)]="filters.crop">
+        <option value="">Crop Type</option>
+        <option *ngFor="let crop of crops" [value]="crop">
+          {{ crop }}
+        </option>
+      </select>
+
+      <select [(ngModel)]="filters.state">
+        <option value="">State</option>
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+
+      <select [(ngModel)]="filters.category">
+        <option value="">Scheme Type</option>
+        <option value="Loan">Loan</option>
+        <option value="Insurance">Insurance</option>
+        <option value="Subsidy">Subsidy</option>
+      </select>
+    </div>
+
+    <!-- Schemes Grid -->
+    <div class="schemes-grid">
+      <div
+        class="scheme-card"
+        *ngFor="let scheme of filteredSchemes()"
+      >
+        <span class="scheme-type">{{ scheme.category }}</span>
+
+        <h3>{{ scheme.name }}</h3>
+
+        <p>{{ scheme.description }}</p>
+
+        <div class="scheme-meta">
+          <span>🌾 {{ scheme.crop }}</span>
+          <span>📍 {{ scheme.state }}</span>
+        </div>
+
+        <a
+          class="apply-btn"
+          [href]="scheme.link"
+          target="_blank"
+        >
+          Apply Now →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

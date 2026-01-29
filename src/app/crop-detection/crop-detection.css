@@ -1,0 +1,202 @@
+/* =====================================================
+   CROP DETECTION SECTION
+===================================================== */
+.crop-section {
+  padding: 4rem 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+
+  animation: fadeUp 0.8s ease;
+}
+
+.crop-section h2 {
+  font-size: 2.2rem;
+  color: #1b5e20;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #546e7a;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+/* =====================================================
+   UPLOAD CARD
+===================================================== */
+.upload-card {
+  background: linear-gradient(
+    180deg,
+    #f1f8e9,
+    #ffffff
+  );
+  padding: 2.4rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================================================
+   UPLOAD BOX
+===================================================== */
+.upload-box {
+  width: 100%;
+  height: 240px;
+  border: 2px dashed #81c784;
+  border-radius: 18px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #2e7d32;
+  font-size: 1.1rem;
+  font-weight: 600;
+  overflow: hidden;
+
+  background: rgba(129, 199, 132, 0.08);
+  transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+  background: rgba(129, 199, 132, 0.15);
+  transform: scale(1.01);
+}
+
+/* Placeholder */
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.upload-placeholder .icon {
+  font-size: 2.4rem;
+}
+
+.upload-placeholder small {
+  color: #607d8b;
+  font-size: 0.75rem;
+}
+
+/* Preview Image */
+.upload-box img,
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* =====================================================
+   DETECT BUTTON
+===================================================== */
+.detect-btn {
+  margin-top: 1.8rem;
+  padding: 0.9rem 2.4rem;
+  border: none;
+  border-radius: 30px;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+
+  background: linear-gradient(
+    90deg,
+    #4caf50,
+    #2e7d32
+  );
+  color: white;
+
+  box-shadow: 0 10px 25px rgba(76, 175, 80, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detect-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(76, 175, 80, 0.55);
+}
+
+.detect-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =====================================================
+   RESULT CARD
+===================================================== */
+.result-card {
+  margin-top: 3rem;
+  background: #ffffff;
+  padding: 2.4rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  text-align: left;
+
+  animation: fadeUp 0.6s ease;
+}
+
+.result-card h3 {
+  color: #1b5e20;
+  margin-bottom: 1.4rem;
+  font-size: 1.4rem;
+}
+
+/* Result grid */
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.4rem;
+}
+
+.result-item {
+  background: #f1f8e9;
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.result-item span {
+  display: block;
+  color: #607d8b;
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.result-item strong {
+  color: #1b5e20;
+  font-weight: 700;
+}
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 480px) {
+  .upload-box {
+    height: 200px;
+  }
+
+  .crop-section h2 {
+    font-size: 1.9rem;
+  }
+}

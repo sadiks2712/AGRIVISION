@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+  <div class="login-container">
+
+    <h2>🌾 Farmer Login</h2>
+    <p class="subtitle">Access your smart farming dashboard</p>
+
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Email address"
+        [(ngModel)]="email"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password"
+      />
+    </div>
+
+    <div class="btn-group">
+      <button (click)="emailLogin()">Login</button>
+      <button class="forgot-btn" (click)="forgotPassword()">
+        Forgot Password?
+      </button>
+    </div>
+
+    <div class="divider">OR</div>
+
+ <button class="google-btn" (click)="googleLogin()">
+  <svg class="google-icon" viewBox="0 0 48 48">
+    <path fill="#EA4335" d="M24 9.5c3.14 0 5.97 1.08 8.2 2.87l6.1-6.1C34.5 2.4 29.6 0 24 0 14.6 0 6.5 5.38 2.5 13.2l7.3 5.67C11.6 13.3 17.3 9.5 24 9.5z"/>
+    <path fill="#34A853" d="M46.1 24.6c0-1.6-.14-2.8-.44-4.1H24v7.8h12.7c-.6 3-2.4 5.5-5 7.2l7.7 6c4.5-4.2 7-10.4 7-16.9z"/>
+    <path fill="#FBBC05" d="M9.8 28.9c-.5-1.4-.8-2.9-.8-4.4s.3-3 .8-4.4L2.5 13.2C.9 16.3 0 20 0 24s.9 7.7 2.5 10.8l7.3-5.9z"/>
+    <path fill="#4285F4" d="M24 48c6.5 0 11.9-2.1 15.9-5.7l-7.7-6c-2.1 1.4-4.8 2.3-8.2 2.3-6.7 0-12.4-3.8-14.2-9.3l-7.3 5.9C6.5 42.6 14.6 48 24 48z"/>
+  </svg>
+  Continue with Google
+</button>
+
+  </div>
+</div>
+<div class="farm-particles">
+  <span style="left:10%; animation-duration: 18s;"></span>
+  <span style="left:30%; animation-duration: 22s;"></span>
+  <span style="left:50%; animation-duration: 20s;"></span>
+  <span style="left:70%; animation-duration: 25s;"></span>
+  <span style="left:90%; animation-duration: 19s;"></span>
+</div>

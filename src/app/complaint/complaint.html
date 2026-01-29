@@ -1,0 +1,41 @@
+<section class="complaint-section">
+
+  <h2>📝 Complaint & Feedback</h2>
+  <p class="subtitle">
+    Help us improve by reporting issues or wrong suggestions.
+  </p>
+
+  <div class="form-card">
+
+    <input
+      type="text"
+      placeholder="Your Name"
+      [(ngModel)]="name"
+    />
+
+    <select [(ngModel)]="category">
+      <option value="">Select Category</option>
+      <option value="App issue">App issue</option>
+      <option value="Wrong suggestion">Wrong suggestion</option>
+      <option value="Weather alert problem">Weather alert problem</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <textarea
+      rows="4"
+      placeholder="Describe your issue..."
+      [(ngModel)]="message">
+    </textarea>
+
+    <input type="file" (change)="onFileChange($event)" />
+
+    <button (click)="submitComplaint()" [disabled]="loading">
+      {{ loading ? 'Submitting...' : 'Submit Complaint' }}
+    </button>
+
+    <p class="success" *ngIf="successMsg">{{ successMsg }}</p>
+
+  </div>
+
+
+</section>
