@@ -19,12 +19,18 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+           "assets": [
+  {
+    "glob": "**/*",
+    "input": "public"
+  },
+  {
+    "glob": "_redirects",
+    "input": "src",
+    "output": "/"
+  }
+],
+
             "styles": [
               "src/styles.css"
             ]

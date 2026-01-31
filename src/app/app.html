@@ -42,23 +42,23 @@
       *ngIf="activeSection === 'schemes'">
     </app-schemes>
 
-    <!-- 🕘 FARMER HISTORY (✅ FIXED) -->
+    <!-- 🕘 FARMER HISTORY -->
     <section
       *ngIf="activeSection === 'history'"
       class="page-section">
 
-    
-
-      <!-- ✅ REAL HISTORY COMPONENT -->
       <app-farmer-history></app-farmer-history>
 
     </section>
 
     <!-- 📝 REPORTS / COMPLAINTS -->
-   <app-complaint></app-complaint>
-     
+    <section
+      *ngIf="activeSection === 'complaint'"
+      class="page-section">
 
-   
+      <app-complaint></app-complaint>
+
+    </section>
 
   </main>
 
