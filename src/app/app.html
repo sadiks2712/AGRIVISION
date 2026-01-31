@@ -4,13 +4,13 @@
   (loginSuccess)="onLoginSuccess()">
 </app-login>
 
-<!-- 🧾 COMPLETE PROFILE (FIRST LOGIN ONLY) -->
+<!-- 🧾 COMPLETE PROFILE -->
 <app-complete-profile
   *ngIf="isLoggedIn && !isProfileComplete"
   (profileSaved)="onProfileCompleted()">
 </app-complete-profile>
 
-<!-- 🏠 SHOW DASHBOARD AFTER PROFILE IS COMPLETE -->
+<!-- 🏠 DASHBOARD -->
 <div *ngIf="isLoggedIn && isProfileComplete">
 
   <!-- 📌 NAVBAR -->
@@ -21,43 +21,39 @@
   <!-- 📌 MAIN CONTENT -->
   <main class="main-content">
 
-    <!-- 🏠 HOME / HERO -->
+    <!-- 🏠 HOME -->
     <app-hero
       *ngIf="activeSection === 'home'"
       (startClicked)="onStartClicked()">
     </app-hero>
 
-    <!-- 🌾 CROP DETECTION -->
+    <!-- 🌾 CROP -->
     <app-crop-detection
       *ngIf="activeSection === 'crop'">
     </app-crop-detection>
 
-    <!-- 🌦 WEATHER ALERT -->
+    <!-- 🌦 WEATHER -->
     <app-weather-alert
       *ngIf="activeSection === 'weather'">
     </app-weather-alert>
 
-    <!-- 📜 GOVERNMENT SCHEMES -->
+    <!-- 📜 SCHEMES -->
     <app-schemes
       *ngIf="activeSection === 'schemes'">
     </app-schemes>
 
-    <!-- 🕘 FARMER HISTORY -->
+    <!-- 🕘 HISTORY -->
     <section
       *ngIf="activeSection === 'history'"
       class="page-section">
-
       <app-farmer-history></app-farmer-history>
-
     </section>
 
-    <!-- 📝 REPORTS / COMPLAINTS -->
+    <!-- 📝 COMPLAINT -->
     <section
-      *ngIf="activeSection === 'complaint'"
+      *ngIf="activeSection === 'report'"
       class="page-section">
-
       <app-complaint></app-complaint>
-
     </section>
 
   </main>
