@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'; // ✅ REQUIRED
-
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/login';
 import { NavbarComponent } from './navbar/navbar';
 import { Hero } from './hero/hero';
 import { CropDetection } from './crop-detection/crop-detection';
@@ -17,6 +16,7 @@ import { ComplaintComponent } from './complaint/complaint';
   standalone: true,
   imports: [
     CommonModule,
+   
     LoginComponent,
     CompleteProfileComponent,
     NavbarComponent,

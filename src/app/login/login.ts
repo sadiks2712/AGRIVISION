@@ -7,8 +7,8 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.html',
+  styleUrls: ['./login.css']
 })
 export class LoginComponent {
 
@@ -35,5 +35,9 @@ export class LoginComponent {
         this.loginSuccess.emit();   // ✅ EMIT EVENT
       })
       .catch((err: any) => alert(err.message));
+  }
+  
+  forgotPassword() {
+    console.log('Forgot password clicked');
   }
 }
