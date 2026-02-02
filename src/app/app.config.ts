@@ -3,15 +3,16 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
-import { environment } from '../environments/environments';
+import { environment } from '../environments/environments'; // ✅ FIXED
 
 export const appConfig: ApplicationConfig = {
   providers: [
 
-    // 🌐 HTTP CLIENT (API calls, Weather, ML, SMS backend)
+    // 🌐 HTTP CLIENT (Weather, ML, external APIs)
     provideHttpClient(
-      withFetch() // ✅ better compatibility & performance
+      withFetch()
     ),
 
     // 🔥 Firebase App Initialization
@@ -22,7 +23,8 @@ export const appConfig: ApplicationConfig = {
     // 🔐 Firebase Authentication
     provideAuth(() => getAuth()),
 
-  ],
-  
-};
+    // 🗄️ Firestore Database (NEW)
+    provideFirestore(() => getFirestore()),
 
+  ],
+};

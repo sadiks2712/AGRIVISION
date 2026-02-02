@@ -17,7 +17,6 @@ import { ComplaintComponent } from './complaint/complaint';
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,        // ✅ FIX
     LoginComponent,
     CompleteProfileComponent,
     NavbarComponent,

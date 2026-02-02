@@ -4,8 +4,8 @@ import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-hero',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: true,          // ✅ REQUIRED
+  imports: [CommonModule], 
   templateUrl: './hero.html',
   styleUrls: ['./hero.css']
 })

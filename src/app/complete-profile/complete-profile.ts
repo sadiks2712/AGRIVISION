@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+
 import { Auth } from '@angular/fire/auth';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { onAuthStateChanged, User } from 'firebase/auth';
 
 @Component({
   selector: 'app-complete-profile',
@@ -18,20 +20,33 @@ export class CompleteProfileComponent {
   language: 'en' | 'hi' | 'mr' = 'en';
 
   isLoading = false;
-  isNight = false; // ✅ ADD THIS
+  isNight = false;
+
+  private currentUser: User | null = null;
 
   @Output() profileSaved = new EventEmitter<void>();
 
   constructor(
-    private http: HttpClient,
-    private auth: Auth
+    private auth: Auth,
+    private firestore: Firestore
   ) {
-    // 🌙 Auto-detect night mode
+    // 🌙 Day / Night UI
     const hour = new Date().getHours();
     this.isNight = hour >= 19 || hour < 6;
+
+    // 🔐 WAIT FOR AUTH STATE (IMPORTANT)
+    onAuthStateChanged(this.auth, user => {
+      if (user) {
+        this.currentUser = user;
+        console.log('✅ Auth ready:', user.uid);
+      } else {
+        this.currentUser = null;
+        console.warn('❌ No user logged in');
+      }
+    });
   }
 
-  saveProfile() {
+  async saveProfile() {
     console.log('SAVE BUTTON CLICKED');
 
     if (!this.phone || !this.location) {
@@ -39,31 +54,36 @@ export class CompleteProfileComponent {
       return;
     }
 
-    const user = this.auth.currentUser;
-    if (!user) {
+    if (!this.currentUser) {
       alert('User not logged in');
       return;
     }
 
     this.isLoading = true;
 
-    this.http.post('http://127.0.0.1:5001/api/users/save', {
-      uid: user.uid,
-      email: user.email,
-      phone: this.phone,
-      location: this.location,
-      language: this.language
-    }).subscribe({
-      next: () => {
-        console.log('PROFILE SAVED');
-        this.isLoading = false;
-        this.profileSaved.emit();
-      },
-      error: (err) => {
-        console.error(err);
-        this.isLoading = false;
-        alert('Failed to save profile');
-      }
-    });
+    try {
+      await setDoc(
+        doc(this.firestore, 'users', this.currentUser.uid),
+        {
+          uid: this.currentUser.uid,
+          email: this.currentUser.email,
+          phone: this.phone,
+          location: this.location,
+          language: this.language,
+          createdAt: new Date()
+        },
+        { merge: true }
+      );
+
+      console.log('✅ PROFILE SAVED TO FIRESTORE');
+      this.profileSaved.emit();
+
+    } catch (error: any) {
+      console.error('❌ SAVE PROFILE ERROR:', error);
+      alert(error.message || 'Failed to save profile');
+
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

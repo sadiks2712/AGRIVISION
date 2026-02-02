@@ -5,17 +5,36 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  signOut
 } from '@angular/fire/auth';
+import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
-  constructor(private auth: Auth) {}
+  constructor(
+    private auth: Auth,
+    private firestore: Firestore
+  ) {}
 
-  googleLogin() {
+  async googleLogin() {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(this.auth, provider);
+    const result = await signInWithPopup(this.auth, provider);
+
+    await setDoc(
+      doc(this.firestore, 'users', result.user.uid),
+      {
+        uid: result.user.uid,
+        email: result.user.email,
+        createdAt: serverTimestamp()
+      },
+      { merge: true }
+    );
+
+    return result;
   }
 
   emailSignup(email: string, password: string) {
@@ -28,5 +47,9 @@ export class AuthService {
 
   resetPassword(email: string) {
     return sendPasswordResetEmail(this.auth, email);
+  }
+
+  logout() {
+    return signOut(this.auth);
   }
 }
