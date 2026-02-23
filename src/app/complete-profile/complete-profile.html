@@ -22,21 +22,30 @@
   <div class="profile-wrapper">
     <h2>🌙 Complete Your Profile</h2>
 
-    <input type="text" placeholder="Mobile Number" [(ngModel)]="phone" />
-    <input type="text" placeholder="Village / City" [(ngModel)]="location" />
+    <input
+      type="text"
+      placeholder="Mobile Number"
+      [(ngModel)]="phone" />
 
-    <select [(ngModel)]="language">
-      <option value="en">English</option>
-      <option value="hi">Hindi</option>
-      <option value="mr">Marathi</option>
-    </select>
+    <input
+      type="text"
+      placeholder="Village / City"
+      [(ngModel)]="location" />
 
-  <button
-  type="button"
-  [disabled]="isLoading"
-  (click)="saveProfile()">
-  {{ isLoading ? 'Saving...' : 'Save & Continue' }}
+   <select [(ngModel)]="language">
+  <option value="">Select Language</option>
+  <option value="en">English</option>
+  <option value="hi">Hindi</option>
+  <option value="mr">Marathi</option>
+</select>
+
+
+   <button
+  (click)="saveProfile()"
+  [disabled]="isLoading">
+  {{ isLoading ? 'Saving...' : 'Save Profile' }}
 </button>
+
   </div>
 
 </div>

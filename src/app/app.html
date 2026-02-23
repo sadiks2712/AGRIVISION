@@ -1,62 +1,66 @@
-<!-- 🔐 SHOW LOGIN FIRST -->
-<app-login
-  *ngIf="!isLoggedIn"
-  (loginSuccess)="onLoginSuccess()">
-</app-login>
+<!-- ⏳ WAIT UNTIL FIREBASE AUTH IS READY -->
+<ng-container *ngIf="isAuthReady">
 
-<!-- 🧾 COMPLETE PROFILE -->
-<app-complete-profile
-  *ngIf="isLoggedIn && !isProfileComplete"
-  (profileSaved)="onProfileCompleted()">
-</app-complete-profile>
+  <!-- 🔐 LOGIN -->
+  <app-login
+    *ngIf="!isLoggedIn"
+    (loginSuccess)="onLoginSuccess()">
+  </app-login>
 
+  <!-- 🧾 COMPLETE PROFILE -->
+  <app-complete-profile
+    *ngIf="isLoggedIn && !isProfileComplete"
+    (profileSaved)="onProfileCompleted()">
+  </app-complete-profile>
 
-<!-- 🏠 DASHBOARD -->
-<div *ngIf="isLoggedIn && isProfileComplete">
+  <!-- 🏠 DASHBOARD -->
+  <div *ngIf="isLoggedIn && isProfileComplete">
 
-  <!-- 📌 NAVBAR -->
-  <app-navbar
-    (menuSelected)="onMenuChange($event)">
-  </app-navbar>
+    <!-- 📌 NAVBAR -->
+    <app-navbar
+      (menuSelected)="onMenuChange($event)">
+    </app-navbar>
 
-  <!-- 📌 MAIN CONTENT -->
-  <main class="main-content">
+    <!-- 📌 MAIN CONTENT -->
+    <main class="main-content">
 
-    <!-- 🏠 HOME -->
-    <app-hero
-      *ngIf="activeSection === 'home'"
-      (startClicked)="onStartClicked()">
-    </app-hero>
+      <!-- 🏠 HOME -->
+      <app-hero
+        *ngIf="activeSection === 'home'"
+        (startClicked)="onStartClicked()">
+      </app-hero>
 
-    <!-- 🌾 CROP -->
-    <app-crop-detection
-      *ngIf="activeSection === 'crop'">
-    </app-crop-detection>
+      <!-- 🌾 CROP -->
+      <app-crop-detection
+        *ngIf="activeSection === 'crop'">
+      </app-crop-detection>
 
-    <!-- 🌦 WEATHER -->
-    <app-weather-alert
-      *ngIf="activeSection === 'weather'">
-    </app-weather-alert>
+      <!-- 🌦 WEATHER -->
+      <app-weather-alert
+        *ngIf="activeSection === 'weather'">
+      </app-weather-alert>
 
-    <!-- 📜 SCHEMES -->
-    <app-schemes
-      *ngIf="activeSection === 'schemes'">
-    </app-schemes>
+      <!-- 📜 SCHEMES -->
+      <app-schemes
+        *ngIf="activeSection === 'schemes'">
+      </app-schemes>
 
-    <!-- 🕘 HISTORY -->
-    <section
-      *ngIf="activeSection === 'history'"
-      class="page-section">
-      <app-farmer-history></app-farmer-history>
-    </section>
+      <!-- 🕘 HISTORY -->
+      <section
+        *ngIf="activeSection === 'history'"
+        class="page-section">
+        <app-farmer-history></app-farmer-history>
+      </section>
 
-    <!-- 📝 COMPLAINT -->
-    <section
-      *ngIf="activeSection === 'report'"
-      class="page-section">
-      <app-complaint></app-complaint>
-    </section>
+      <!-- 📝 COMPLAINT -->
+      <section
+        *ngIf="activeSection === 'report'"
+        class="page-section">
+        <app-complaint></app-complaint>
+      </section>
 
-  </main>
+    </main>
 
-</div>
+  </div>
+
+</ng-container>

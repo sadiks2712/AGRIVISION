@@ -4,27 +4,29 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging'; // ✅ ADD THIS
 
-import { environment } from '../environments/environments'; // ✅ FIXED
+import { environment } from '../environments/environments';
 
 export const appConfig: ApplicationConfig = {
   providers: [
 
-    // 🌐 HTTP CLIENT (Weather, ML, external APIs)
-    provideHttpClient(
-      withFetch()
-    ),
+    // 🌐 HTTP CLIENT
+    provideHttpClient(withFetch()),
 
-    // 🔥 Firebase App Initialization
+    // 🔥 Firebase App
     provideFirebaseApp(() =>
       initializeApp(environment.firebase)
     ),
 
-    // 🔐 Firebase Authentication
+    // 🔐 Firebase Auth
     provideAuth(() => getAuth()),
 
-    // 🗄️ Firestore Database (NEW)
+    // 🗄️ Firestore
     provideFirestore(() => getFirestore()),
+
+    // 📲 Firebase Cloud Messaging (NEW)
+    provideMessaging(() => getMessaging()),
 
   ],
 };

@@ -24,3 +24,8 @@ dist/
 # Backend folders (exclude from frontend repo)
 backend/
 backend-ml/
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

@@ -3,38 +3,41 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": "6c3126a4-266a-4c5c-9733-5ec6552ff8c7"
+    "analytics": "c80fea32-2596-411f-bb18-7ea2c1b98467"
   },
-  "newProjectRoot": "projects",
   "projects": {
     "smart-farmer-app": {
       "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+
         "build": {
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-           "assets": [
-  {
-    "glob": "**/*",
-    "input": "public"
-  },
-  {
-    "glob": "_redirects",
-    "input": "src",
-    "output": "/"
-  }
+
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              }
+            ],
+            "assets": [
+  "src/favicon.ico",
+  "src/assets",
+  "src/messaging-sw.js"
 ],
+
 
             "styles": [
               "src/styles.css"
             ]
           },
+
           "configurations": {
             "production": {
               "budgets": [
@@ -42,23 +45,20 @@
                   "type": "initial",
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
             },
+
             "development": {
               "optimization": false,
-              "extractLicenses": false,
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
+
+          "defaultConfiguration": "development"
         },
+
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
@@ -71,9 +71,11 @@
           },
           "defaultConfiguration": "development"
         },
+
         "test": {
           "builder": "@angular/build:unit-test"
         }
+
       }
     }
   }

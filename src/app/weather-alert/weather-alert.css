@@ -1,4 +1,11 @@
 /* =====================================================
+   GLOBAL FIX
+===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+/* =====================================================
    WEATHER SECTION (MAIN CONTAINER)
 ===================================================== */
 .weather-section {
@@ -20,7 +27,7 @@
 }
 
 /* =====================================================
-   CLOUDS
+   CLOUDS & RAIN CONTAINER
 ===================================================== */
 .clouds,
 .rain {
@@ -141,11 +148,11 @@
   animation: weatherFade 1s ease;
 }
 
-/* Top */
 .weather-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .temp {
@@ -157,7 +164,9 @@
   opacity: 0.9;
 }
 
-/* Details */
+/* =====================================================
+   DETAILS
+===================================================== */
 .weather-details {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -172,7 +181,9 @@
   text-align: center;
 }
 
-/* Alert */
+/* =====================================================
+   ALERT
+===================================================== */
 .weather-alert {
   background: linear-gradient(135deg, #ffca28, #ffc107);
   color: #3e2723;
@@ -183,7 +194,7 @@
 }
 
 /* =====================================================
-   WEEKLY FORECAST (RIGHT SIDE)
+   WEEKLY FORECAST
 ===================================================== */
 .forecast-section {
   background: rgba(255,255,255,0.75);
@@ -203,6 +214,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.2rem;
+  width: 100%;
 }
 
 .forecast-card {
@@ -239,18 +251,82 @@
 }
 
 /* =====================================================
-   RESPONSIVE (MOBILE → PORTRAIT)
+   TABLET RESPONSIVE
 ===================================================== */
 @media (max-width: 900px) {
-  .weather-layout {
-    grid-template-columns: 1fr;
+
+  .weather-section {
+    padding: 2.5rem 1.2rem;
   }
 
-  .forecast-grid {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  .weather-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .weather-card {
+    padding: 2rem;
   }
 
   .temp {
-    font-size: 3.2rem;
+    font-size: 3rem;
+  }
+
+  .weather-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE RESPONSIVE
+===================================================== */
+@media (max-width: 480px) {
+
+  .weather-section {
+    padding: 2rem 0.9rem;
+  }
+
+  .weather-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .weather-card {
+    padding: 1.5rem;
+    border-radius: 22px;
+  }
+
+  .weather-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .temp {
+    font-size: 2.4rem;
+  }
+
+  .weather-details {
+    grid-template-columns: 1fr;
+  }
+
+  .detail {
+    padding: 0.8rem;
+  }
+
+  .forecast-section {
+    padding: 1.4rem;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .forecast-card {
+    padding: 0.8rem;
   }
 }
